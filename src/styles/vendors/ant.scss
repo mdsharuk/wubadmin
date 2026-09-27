@@ -1,0 +1,32 @@
+@use "../base/variables" as *;
+
+// ─── Ant Design global overrides ──────────────────────────
+
+.ant-breadcrumb {
+  margin-bottom: $spacing-md;
+}
+
+.ant-card {
+  border-radius: $radius-lg;
+  box-shadow: $shadow-sm;
+}
+
+.ant-form-item-label > label {
+  font-weight: $font-weight-medium;
+  color: $text-primary;
+}
+
+.ant-input-affix-wrapper,
+.ant-input {
+  border-radius: $radius-base;
+}
+
+// ─── App content shell ────────────────────────────────────
+
+.app-content {
+  margin: $layout-margin;
+  padding: $content-padding;
+  background-color: $bg-white;
+  border-radius: $radius-lg;
+  box-shadow: $shadow-sm;
+}

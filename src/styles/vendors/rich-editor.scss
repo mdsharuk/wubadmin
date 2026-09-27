@@ -1,0 +1,62 @@
+@use '../base/variables' as *;
+
+// ─── Rich text editor (TinyMCE) ───────────────────────────
+
+.rich-editor {
+  .tox-tinymce {
+    border: 1px solid $border-color;
+    border-radius: $radius-base;
+    transition: border-color 0.15s, box-shadow 0.15s;
+  }
+
+  // When the editor is focused, the whole border follows the brand color
+  .tox-tinymce.tox-edit-focus {
+    border-color: $brand-color;
+    box-shadow: 0 0 0 2px rgba($brand-color, 0.15);
+  }
+
+  .tox:not(.tox-tinymce-inline) .tox-editor-header {
+    background-color: $bg-white;
+    box-shadow: none;
+    padding: 0;
+  }
+
+  // Flat, aligned toolbar
+  .tox .tox-toolbar,
+  .tox .tox-toolbar__primary,
+  .tox .tox-toolbar__overflow,
+  .tox .tox-toolbar-overlord {
+    background-color: transparent;
+  }
+
+  .tox .tox-toolbar__group {
+    align-items: center;
+    padding: 4px;
+  }
+
+  // Remove the inner content-area focus border (keep the outer one only)
+  .tox .tox-edit-area::before {
+    border: 0;
+  }
+
+  // Toolbar active/toggle buttons follow the brand color
+  .tox .tox-tbtn--enabled,
+  .tox .tox-tbtn--enabled:hover,
+  .tox .tox-tbtn--enabled:focus {
+    background-color: rgba($brand-color, 0.12);
+    color: $brand-color;
+  }
+
+  .tox .tox-tbtn--enabled svg,
+  .tox .tox-tbtn--enabled:hover svg {
+    fill: $brand-color;
+  }
+
+  &--error .tox-tinymce {
+    border-color: $danger-color;
+  }
+
+  &--readonly .tox-editor-header {
+    display: none;
+  }
+}

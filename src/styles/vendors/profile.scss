@@ -1,0 +1,47 @@
+@use '../base/variables' as *;
+
+// ─── Profile (personal information / settings) ────────────
+
+.profile-page {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 320px;
+  gap: $spacing-lg;
+  align-items: start;
+
+  &__main,
+  &__side {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-md;
+  }
+}
+
+.profile-card {
+  padding: $spacing-lg;
+  border: 1px solid $border-color-split;
+  border-radius: $radius-lg;
+  background-color: $bg-white;
+
+  &__title {
+    font-size: $font-size-lg;
+    font-weight: $font-weight-semibold;
+    color: $text-primary;
+  }
+
+  &__subtitle {
+    margin-top: $spacing-xs;
+    margin-bottom: $spacing-lg;
+    font-size: $font-size-sm;
+    color: $text-muted;
+  }
+}
+
+.profile-form__full {
+  grid-column: 1 / -1;
+}
+
+@media (max-width: 992px) {
+  .profile-page {
+    grid-template-columns: 1fr;
+  }
+}

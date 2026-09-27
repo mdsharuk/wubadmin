@@ -1,0 +1,258 @@
+@use '../base/variables' as *;
+
+$auth-image-bg: #f8f7fa;
+$auth-btn-from: #4a5cf5;
+$auth-btn-to: #9b6cf3;
+
+// ─── Public layout (login / forgot password) ──────────────
+
+.public-layout {
+  display: flex;
+  min-height: 100vh;
+  background-color: $bg-white;
+}
+
+.auth-shell {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  width: 100%;
+  min-height: 100vh;
+
+  // ─── Left image panel ───────────────────────────────────
+  &__aside {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: $spacing-sm;
+    overflow: hidden;
+  }
+
+  &__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border: 1px solid $border-color-split;
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  }
+
+  // ─── Right form panel ───────────────────────────────────
+  &__main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-self: center;
+    justify-self: center;
+    width: 100%;
+    max-width: 460px;
+    padding: $spacing-xl $spacing-xxl;
+    border: 1px solid $border-color-split;
+    border-radius: 16px;
+    background-color: $bg-white;
+  }
+
+  &__content {
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+  }
+}
+
+// ─── Auth content ─────────────────────────────────────────
+
+.auth-head {
+  margin-bottom: $spacing-lg;
+  text-align: center;
+}
+
+.auth-title {
+  font-size: 28px;
+  font-weight: $font-weight-semibold;
+  color: $text-primary;
+}
+
+.auth-subtitle {
+  margin-top: $spacing-xs;
+  font-size: $font-size-base;
+  color: $text-muted;
+}
+
+.auth-field {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-xs;
+
+  label {
+    font-size: $font-size-sm;
+    font-weight: $font-weight-medium;
+    color: $text-primary;
+  }
+}
+
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-md;
+
+  .ant-input,
+  .ant-input-affix-wrapper {
+    height: 40px;
+    padding: 0 $spacing-md;
+    border-radius: 10px;
+    border-color: $border-color;
+    background-color: $bg-white;
+    font-size: $font-size-base;
+  }
+
+  .ant-input-affix-wrapper > input.ant-input {
+    height: 100%;
+    padding: 0;
+    border-radius: 0;
+  }
+
+  .ant-input:hover,
+  .ant-input-affix-wrapper:hover {
+    border-color: $input-focus-color;
+  }
+
+  .ant-input:focus,
+  .ant-input-focused,
+  .ant-input-affix-wrapper:focus,
+  .ant-input-affix-wrapper-focused {
+    border-color: $input-focus-color;
+    box-shadow: 0 0 0 2px rgba($input-focus-color, 0.12);
+  }
+}
+
+.auth-form__options {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: $spacing-sm;
+  font-size: $font-size-sm;
+}
+
+.auth-form__forgot {
+  align-self: flex-start;
+  font-size: $font-size-sm;
+  color: $auth-btn-from;
+
+  &:hover {
+    color: $auth-btn-to;
+  }
+}
+
+.auth-form .auth-submit.ant-btn {
+  height: 40px;
+  border: none;
+  border-radius: 10px;
+  font-size: $font-size-md;
+  font-weight: $font-weight-medium;
+  color: $text-inverse;
+  background-image: linear-gradient(
+    90deg,
+    $auth-btn-from 0%,
+    $auth-btn-to 100%
+  );
+  box-shadow: none;
+
+  &:hover,
+  &:focus,
+  &:active {
+    color: $text-inverse;
+    background-image: linear-gradient(
+      90deg,
+      $auth-btn-from 0%,
+      $auth-btn-to 100%
+    );
+    opacity: 0.92;
+  }
+}
+
+.auth-signup {
+  margin-top: $spacing-lg;
+  text-align: center;
+  font-size: $font-size-sm;
+  color: $text-secondary;
+
+  a {
+    font-weight: $font-weight-medium;
+    color: $auth-btn-from;
+
+    &:hover {
+      color: $auth-btn-to;
+    }
+  }
+}
+
+// ─── Responsive ───────────────────────────────────────────
+
+// Small laptops / tablets (landscape)
+@media (max-width: 1100px) {
+  .auth-shell {
+    gap: 16px;
+
+    &__main {
+      padding: $spacing-xl;
+    }
+
+    &__content {
+      max-width: 360px;
+    }
+  }
+}
+
+// Tablets (portrait) — hide the image and stack
+@media (max-width: 900px) {
+  .auth-shell {
+    grid-template-columns: 1fr;
+
+    &__aside {
+      display: none;
+    }
+
+    &__main {
+      min-height: 560px;
+      padding: $spacing-xl $spacing-lg;
+    }
+  }
+}
+
+// Phones
+@media (max-width: 576px) {
+  .public-layout {
+    padding: $spacing-md;
+  }
+
+  .auth-shell__main {
+    max-width: 100%;
+    min-height: auto;
+    padding: $spacing-lg $spacing-md;
+    border-radius: 12px;
+  }
+
+  .auth-title {
+    font-size: 24px;
+  }
+}
+
+// Small phones
+@media (max-width: 380px) {
+  .auth-shell__main {
+    padding: $spacing-md;
+  }
+
+  .auth-title {
+    font-size: 22px;
+  }
+}
+
+// Short viewports (landscape phones / small laptops)
+@media (max-height: 640px) and (min-width: 901px) {
+  .auth-shell__main {
+    min-height: auto;
+    padding-top: $spacing-lg;
+    padding-bottom: $spacing-lg;
+  }
+}

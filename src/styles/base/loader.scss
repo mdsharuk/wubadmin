@@ -1,0 +1,77 @@
+@use 'variables' as *;
+
+// ─── Loader ───────────────────────────────────────────────
+
+.loader {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: $spacing-xl;
+
+  &--fullscreen {
+    position: fixed;
+    inset: 0;
+    z-index: $z-toast;
+    padding: 0;
+    background-color: rgba(255, 255, 255, 0.75);
+    backdrop-filter: blur(2px);
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: $spacing-sm;
+  }
+
+  &__spinner {
+    display: inline-block;
+    width: 28px;
+    height: 28px;
+    border: 3px solid rgba($brand-color, 0.2);
+    border-top-color: $brand-color;
+    border-radius: $radius-full;
+    animation: loader-spin 0.7s linear infinite;
+  }
+
+  &__tip {
+    font-size: $font-size-md;
+    color: $text-secondary;
+  }
+
+  &--sm .loader__spinner {
+    width: 18px;
+    height: 18px;
+    border-width: 2px;
+  }
+
+  &--lg .loader__spinner {
+    width: 40px;
+    height: 40px;
+    border-width: 4px;
+  }
+}
+
+@keyframes loader-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+// Demo/preview row (used on the dashboard to inspect the loader)
+.loader-preview-wrap {
+  margin-top: $spacing-lg;
+}
+
+.loader-preview {
+  display: flex;
+  align-items: center;
+  gap: $spacing-xl;
+  flex-wrap: wrap;
+
+  .loader {
+    width: auto;
+    padding: 0;
+  }
+}

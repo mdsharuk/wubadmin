@@ -1,0 +1,241 @@
+@use '../base/variables' as *;
+
+// ─── App layout shell ─────────────────────────────────────
+
+.app-layout {
+  min-height: 100vh;
+  background-color: $bg-layout;
+
+  &__body {
+    min-width: 0;
+  }
+}
+
+// ─── Header (full-width top bar) ──────────────────────────
+
+.app-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: $spacing-md;
+  height: $header-height;
+  padding: 0 $spacing-md !important;
+  line-height: normal;
+  background-color: $bg-white !important;
+  border-bottom: 1px solid $border-color-split;
+  position: sticky;
+  top: 0;
+  z-index: $z-fixed;
+
+  &__left {
+    display: flex;
+    align-items: center;
+    gap: $spacing-sm;
+    min-width: 0;
+  }
+
+  &__toggle.ant-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    font-size: $font-size-lg;
+    color: $text-secondary;
+  }
+
+  &__logo {
+    display: block;
+    height: 32px;
+    width: auto;
+  }
+
+  &__right {
+    display: flex;
+    align-items: center;
+    gap: $spacing-xs;
+  }
+
+  &__search {
+    width: 220px;
+    border-color: transparent;
+    border-radius: $radius-full;
+    background-color: $bg-layout;
+
+    &:hover,
+    &:focus,
+    &:focus-within {
+      border-color: transparent;
+      background-color: $bg-layout;
+    }
+  }
+
+  &__icon.ant-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    font-size: $font-size-md;
+    color: $text-secondary;
+    border-radius: $radius-base;
+  }
+
+  &__user {
+    cursor: pointer;
+    padding: $spacing-xs $spacing-sm;
+    border-radius: $radius-base;
+    transition: background-color $transition-fast;
+
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.04);
+    }
+  }
+
+  &__username {
+    color: $text-primary;
+    font-size: $font-size-base;
+  }
+
+  &__account {
+    display: flex;
+    align-items: center;
+    gap: $spacing-sm;
+  }
+
+  &__account-email {
+    font-weight: $font-weight-medium;
+    color: $text-primary;
+  }
+}
+
+// ─── Sidebar ──────────────────────────────────────────────
+
+.app-sider {
+  background-color: $bg-white !important;
+  border-right: 1px solid $border-color-split;
+  position: sticky;
+  top: $header-height;
+  height: calc(100vh - #{$header-height});
+  overflow: auto;
+
+  .app-menu {
+    padding: $spacing-sm;
+    border-inline-end: none !important;
+  }
+}
+
+// ─── Menu typography ──────────────────────────────────────
+
+.app-menu {
+  // Parent items (top-level items, submenu & group titles)
+  .ant-menu-item,
+  .ant-menu-submenu-title,
+  .ant-menu-item-group-title {
+    font-family: $font-family;
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: $font-weight-medium;
+    letter-spacing: normal;
+    color: #0b0909;
+  }
+
+  // Child items (nested under a submenu or group)
+  .ant-menu-sub .ant-menu-item,
+  .ant-menu-item-group-list .ant-menu-item {
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: $font-weight-regular;
+    color: #0b0909;
+  }
+
+  // Hover color
+  .ant-menu-item:hover,
+  .ant-menu-submenu-title:hover,
+  .ant-menu-sub .ant-menu-item:hover,
+  .ant-menu-item-group-list .ant-menu-item:hover {
+    color: $brand-color;
+  }
+
+  // Active (selected) item
+  .ant-menu-item-selected,
+  .ant-menu-submenu-selected > .ant-menu-submenu-title {
+    font-weight: $font-weight-medium;
+    color: $brand-color;
+  }
+
+  .ant-menu-sub .ant-menu-item-selected,
+  .ant-menu-item-group-list .ant-menu-item-selected {
+    color: $brand-color;
+  }
+
+  // Equal gap on both sides of the menu items
+  .ant-menu-item,
+  .ant-menu-submenu-title {
+    width: 100%;
+    height: 40px;
+    margin-inline: 0;
+    margin-block: 4px;
+  }
+
+  // Uniform icon size so the vertical rhythm looks even
+  .ant-menu-item .anticon,
+  .ant-menu-submenu-title .anticon,
+  .ant-menu-item svg,
+  .ant-menu-submenu-title svg {
+    font-size: 16px;
+    width: 16px;
+    height: 16px;
+  }
+
+  // Smooth submenu expand/collapse animation
+  .ant-motion-collapse,
+  .ant-motion-collapse-legacy-active {
+    transition:
+      height 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+      opacity 0.35s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  }
+
+  .ant-menu-sub {
+    transition: opacity 0.35s ease;
+  }
+}
+
+.app-drawer {
+  .app-drawer__head {
+    display: flex;
+    align-items: center;
+    height: $header-height;
+    padding: 0 $spacing-md;
+    border-bottom: 1px solid $border-color-split;
+  }
+
+  .app-drawer__logo {
+    display: block;
+    height: 32px;
+    width: auto;
+  }
+
+  .app-menu {
+    padding: $spacing-sm;
+    border-inline-end: none !important;
+  }
+}
+
+// ─── Responsive ───────────────────────────────────────────
+
+@media (max-width: 992px) {
+  .app-header__search {
+    display: none;
+  }
+}
+
+@media (max-width: 576px) {
+  .app-header {
+    padding: 0 $spacing-sm !important;
+  }
+
+  .app-header__username {
+    display: none;
+  }
+}

@@ -1,0 +1,19 @@
+@use '../base/variables' as *;
+
+// ─── All Leads page ───────────────────────────────────────
+
+.leads-page__share.ant-btn {
+  border-color: $brand-color;
+  color: $brand-color;
+
+  &:hover,
+  &:focus {
+    border-color: $brand-color;
+    color: $brand-color;
+  }
+}
+
+.leads-table__id {
+  color: $brand-color;
+  font-weight: $font-weight-medium;
+}

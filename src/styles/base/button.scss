@@ -1,0 +1,86 @@
+@use 'sass:color';
+@use 'variables' as *;
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: $spacing-sm;
+  height: 32px;
+  padding: 0 $spacing-md;
+  border: 1px solid transparent;
+  border-radius: $radius-base;
+  font-size: $font-size-base;
+  font-weight: $font-weight-regular;
+  line-height: 1;
+  white-space: nowrap;
+  user-select: none;
+  transition: $transition-base;
+  outline: none;
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.65;
+  }
+
+  &--primary {
+    background-color: $primary-color;
+    color: $text-inverse;
+
+    &:hover:not(:disabled) {
+      background-color: $primary-color-hover;
+    }
+
+    &:active:not(:disabled) {
+      background-color: $primary-color-active;
+    }
+  }
+
+  &--default {
+    background-color: $bg-white;
+    border-color: $border-color;
+    color: $text-primary;
+
+    &:hover:not(:disabled) {
+      color: $primary-color;
+      border-color: $primary-color;
+    }
+  }
+
+  &--danger {
+    background-color: $danger-color;
+    color: $text-inverse;
+
+    &:hover:not(:disabled) {
+      background-color: color.adjust($danger-color, $lightness: 5%);
+    }
+  }
+
+  &--text {
+    background-color: transparent;
+    color: $text-secondary;
+    padding: 0 $spacing-sm;
+
+    &:hover:not(:disabled) {
+      color: $primary-color;
+      background-color: rgba(0, 0, 0, 0.04);
+    }
+  }
+
+  &--sm {
+    height: 24px;
+    padding: 0 $spacing-sm;
+    font-size: $font-size-sm;
+    border-radius: $radius-sm;
+  }
+
+  &--lg {
+    height: 40px;
+    padding: 0 $spacing-lg;
+    font-size: $font-size-md;
+  }
+
+  &--block {
+    width: 100%;
+  }
+}

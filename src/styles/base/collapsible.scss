@@ -1,0 +1,58 @@
+@use 'variables' as *;
+
+// ─── Collapsible field ────────────────────────────────────
+
+.collapsible-field {
+  border: 1px solid $border-color-split;
+  border-radius: $radius-lg;
+  background-color: $bg-white;
+  overflow: hidden;
+
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: $spacing-sm;
+    width: 100%;
+    padding: $spacing-sm $spacing-md;
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+    text-align: left;
+    font-size: $font-size-base;
+    font-weight: $font-weight-medium;
+    color: $text-primary;
+    transition: background-color $transition-fast;
+
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.02);
+    }
+  }
+
+  &__icon {
+    flex-shrink: 0;
+    color: $text-muted;
+    transition: transform $transition-fast;
+  }
+
+  &--open &__icon {
+    transform: rotate(180deg);
+  }
+
+  &--static &__header {
+    cursor: default;
+    background: transparent;
+
+    &:hover {
+      background-color: transparent;
+    }
+  }
+
+  &--no-header &__body {
+    padding-top: $spacing-md;
+  }
+
+  &__body {
+    padding: 0 $spacing-md $spacing-md;
+  }
+}

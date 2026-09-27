@@ -1,0 +1,21 @@
+@use 'variables' as *;
+
+// ─── Global typography ────────────────────────────────────
+// Single source of truth for the project font family.
+// Change $font-family in base/variables.scss to update it everywhere.
+
+:root {
+  --font-sans: #{$font-family};
+  --brand-color: #{$brand-color};
+}
+
+html,
+body {
+  font-family: var(--font-sans);
+}
+
+// Ant Design v5 injects its own font-family at runtime, so a
+// higher-specificity selector keeps the project font on its components.
+html [class*='ant-'] {
+  font-family: var(--font-sans);
+}
